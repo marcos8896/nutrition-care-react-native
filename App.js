@@ -1,21 +1,22 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { createStackNavigator, createSwitchNavigator } from 'react-navigation';
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>Nutrition Care Init</Text>
-      </View>
-    );
-  }
-}
+import SignInScreen from './components/Screens/SignInScreen/SignInScreen';
+import AuthLoadingScreen from './components/Screens/AuthLoadingScreen/AuthLoadingScreen';
+import DietScreen from './components/Screens/DietScreen/DietScreen';
+import DashboardScreen from './components/Screens/DashboardScreen/DashboardScreen';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+const AppStack = createStackNavigator({ Dashboard: DashboardScreen, Diet: DietScreen });
+const AuthStack = createStackNavigator({ SignIn: SignInScreen });
+
+const RootSwitchStack = createSwitchNavigator(
+  {
+    AuthLoading: AuthLoadingScreen,
+    App: AppStack,
+    Auth: AuthStack,
   },
-});
+  {
+    initialRouteName: 'AuthLoading',
+  }
+);
+
+export default RootSwitchStack;
