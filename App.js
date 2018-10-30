@@ -5,12 +5,14 @@ import AuthLoadingScreen from './components/Screens/AuthLoadingScreen/AuthLoadin
 import DietScreen from './components/Screens/DietScreen/DietScreen';
 import DashboardScreen from './components/Screens/DashboardScreen/DashboardScreen';
 
-import navigationOptions from './navigation/sharedNavigatorOpt';
+import stackConfig from './navigation/shared-stack-config';
+import drawerStackConfig from './navigation/drawer-config';
+
 const AppStack = createDrawerNavigator({ 
-  Dashboard: createStackNavigator({ Dashboard: DashboardScreen }, { navigationOptions }),
-  Dietas: createStackNavigator({ Diet: DietScreen }, { navigationOptions }),
+  Dashboard: createStackNavigator({ Dashboard: DashboardScreen }, drawerStackConfig ),
+  Dietas: createStackNavigator({ Diet: DietScreen }, drawerStackConfig ),
 });
-const AuthStack = createStackNavigator({ SignIn: SignInScreen }, { navigationOptions });
+const AuthStack = createStackNavigator({ SignIn: SignInScreen }, stackConfig );
 
 const RootSwitchStack = createSwitchNavigator(
   {
