@@ -1,6 +1,3 @@
-import React from 'react';
-import { Text } from 'react-native';
-
 import { createStackNavigator, createSwitchNavigator, createDrawerNavigator } from 'react-navigation';
 
 import SignInScreen from './components/Screens/SignInScreen/SignInScreen';
@@ -8,11 +5,12 @@ import AuthLoadingScreen from './components/Screens/AuthLoadingScreen/AuthLoadin
 import DietScreen from './components/Screens/DietScreen/DietScreen';
 import DashboardScreen from './components/Screens/DashboardScreen/DashboardScreen';
 
+import navigationOptions from './navigation/sharedNavigatorOpt';
 const AppStack = createDrawerNavigator({ 
-  Dashboard: createStackNavigator({ Dashboard: DashboardScreen }),
-  Dietas: createStackNavigator({ Diet: DietScreen }),
+  Dashboard: createStackNavigator({ Dashboard: DashboardScreen }, { navigationOptions }),
+  Dietas: createStackNavigator({ Diet: DietScreen }, { navigationOptions }),
 });
-const AuthStack = createStackNavigator({ SignIn: SignInScreen });
+const AuthStack = createStackNavigator({ SignIn: SignInScreen }, { navigationOptions });
 
 const RootSwitchStack = createSwitchNavigator(
   {
