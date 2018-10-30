@@ -5,7 +5,7 @@ import { StatusBar, View, Text } from 'react-native';
 
 class DietScreen extends React.Component {
   static navigationOptions = {
-    title: 'Diets',
+    title: 'Dietas',
   };
 
   render() {
