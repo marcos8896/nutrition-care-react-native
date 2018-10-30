@@ -1,4 +1,5 @@
-const navigationOptions = {
+const stackConfig = {
+  navigationOptions: {
     headerStyle: {
       backgroundColor: '#2196f3',
     },
@@ -6,6 +7,7 @@ const navigationOptions = {
     headerTitleStyle: {
       fontWeight: 'bold',
     },
+  }
 };
 
-export default navigationOptions;
+export default stackConfig;
