@@ -2,13 +2,38 @@ import React from 'react';
 import {
   Alert,
   AsyncStorage,
+  Button,
+  StyleSheet,
   Text,
   TextInput,
-  Button,
-  View,
+  View
 } from 'react-native';
-
 import { requestToken } from './auth.service';
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1
+  },
+  titleContainer: {
+    flex: 1, justifyContent: 'center'
+  },
+  formContainer: {
+    flex: 2,
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'stretch',
+    marginHorizontal: 10
+  },
+  inputContainer: {
+    paddingVertical: 5
+  },
+  input: {
+    height: 40, fontSize: 18
+  },
+  button: {
+    marginTop: 20
+  }
+});
 
 class SignInScreen extends React.Component {
   static navigationOptions = {
@@ -57,39 +82,33 @@ class SignInScreen extends React.Component {
   render() {
     const { email, password } = this.state.userCredentials;
     return (
-      <View style={{flex: 1}}>
-        <View style={{flex: 1, justifyContent: 'center'}}>
+      <View style={styles.container}>
+        <View style={styles.titleContainer}>
           <Text style={{fontSize: 26, textAlign: 'center'}}>
             Iniciar Sesión
           </Text>
         </View>
-        <View style={{
-          flex: 2,
-          flexDirection: 'column',
-          justifyContent: 'flex-start',
-          alignItems: 'stretch',
-          marginHorizontal: 10
-        }}>
-          <View style={{paddingVertical: 5}}>
+        <View style={styles.formContainer}>
+          <View style={styles.inputContainer}>
             <Text>Correo electrónico</Text>
             <TextInput
-              style={{height: 40, fontSize: 18}}
+              style={styles.input}
               placeholder="tu-correo@ejemplo.com"
               value={email}
               keyboardType="email-address"
               onChangeText={(text) => this.handleOnChange('email', text)}
             />
           </View>
-          <View>
+          <View style={styles.inputContainer}>
             <Text>Contraseña</Text>
             <TextInput
-              style={{height: 40, fontSize: 18}}
+              style={styles.input}
               value={password}
               secureTextEntry
               onChangeText={(text) => this.handleOnChange('password', text)}
             />
           </View>
-          <View style={{marginTop: 20}}>
+          <View style={styles.button}>
             <Button title="Iniciar sesión" onPress={this.signInAsync} />
           </View>
         </View>
