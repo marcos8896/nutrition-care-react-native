@@ -18,7 +18,7 @@ class DashboardScreen extends React.Component {
   }
 
   _goToDiet = () => {
-    this.props.navigation.navigate('Diet');
+    this.props.navigation.navigate('Diets');
   };
 
   _signOutAsync = async () => {
