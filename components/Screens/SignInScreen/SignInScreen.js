@@ -71,7 +71,10 @@ class SignInScreen extends React.Component {
       if ( data.error ) {
         this.displayAlert('Sesión invalida', data.error.message);
       } else {
-        await AsyncStorage.setItem('@app:userToken', data.id);
+        await Promise.all([
+          AsyncStorage.setItem('@app:userToken', data.id),
+          AsyncStorage.setItem('@app:userId', data.userId),
+        ]);
         this.props.navigation.navigate('App');
       }
     } catch(error) {
