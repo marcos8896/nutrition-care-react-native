@@ -1,6 +1,8 @@
 import React from 'react';
+
 import { 
-  View, 
+  View,
+  TouchableOpacity, 
   Text,
   AsyncStorage,
   FlatList,
@@ -26,7 +28,7 @@ class DietScreen extends React.PureComponent {
         diet.key = `${diet.id}`
         diet.date = new Date(diet.createdAt).toLocaleDateString();
       });
-      
+
       this.setState({ diets: diets });
       
     })
@@ -58,9 +60,22 @@ class DietScreen extends React.PureComponent {
     .then(response => response.json())
   }
 
+  onPressItem({ dietId, description }) {
+    this.props.navigation.navigate('ShowDiet', { 
+      dietId,
+      description,
+    });
+  }
+
   renderItem = ({ item }) => {
     return (
-      <View style={styles.row}>
+      <TouchableOpacity 
+        style={styles.row}
+        onPress={this.onPressItem.bind(this, {
+          dietId: item.id,
+          description: item.description,
+        })}  
+      >
 
         <Text style={styles.description}>
           {item.description}
@@ -81,7 +96,7 @@ class DietScreen extends React.PureComponent {
           </View>
 
         </View>
-      </View>
+      </TouchableOpacity>
     );
   }
 
