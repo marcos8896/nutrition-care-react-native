@@ -31,9 +31,18 @@ class RoutinesListScreen extends React.Component {
       })
   }
 
+  handlePress = routineId => {
+    console.log('ID', routineId)
+  }
+
   renderItems() {
-    return this.state.routines.map(
-      item => <ListItem key={item.id} title={item.description}/>
+    return this.state.routines.map( item =>
+      <ListItem
+        key={item.id}
+        routineId={item.id}
+        title={item.description}
+        onPress={this.handlePress}
+      />
     )
   }
 

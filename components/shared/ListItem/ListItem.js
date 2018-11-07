@@ -16,9 +16,10 @@ const styles = StyleSheet.create({
   },
 });
 
-const ListItem = ({ title }) => {
+const ListItem = ({ routineId, title, onPress }) => {
+  const handlePress = () => onPress( routineId )
   return (
-    <TouchableOpacity style={{backgroundColor: '#DCDCDC'}}>
+    <TouchableOpacity style={{backgroundColor: '#DCDCDC'}} onPress={handlePress}>
       <Text style={styles.listItem}>
         {title}
       </Text>
