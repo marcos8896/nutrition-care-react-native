@@ -4,8 +4,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#FFF'
+    justifyContent: 'flex-start',
   },
 });
 
