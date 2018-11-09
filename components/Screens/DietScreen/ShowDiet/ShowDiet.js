@@ -1,13 +1,10 @@
 import React from 'react';
 import axios from 'axios';
 
-import { 
-  View,
-  Text,
-  AsyncStorage,
-  StyleSheet,
-  Alert,
-} from 'react-native';
+import DietGeneralInfo from './components/DietGeneralInfo';
+import Divider from '../../../shared/Divider/Divider';
+
+import { View, AsyncStorage, StyleSheet, Alert } from 'react-native';
 
 import { BASE_API_URL } from '../../../../constants';
 
@@ -19,7 +16,7 @@ class ShowDiet extends React.PureComponent {
   }
 
   state = {
-    diet: null,
+    diet: {},
     dietFoodDetails: [],
     json: 'null'
   }
@@ -68,20 +65,17 @@ class ShowDiet extends React.PureComponent {
 
   render() {
     return (
-      
-      <View style={styles.container}>
-        <View style={styles.paper}>
-          <Text>Cambia id: { this.state.json }</Text>
-        </View>
+      <View style={styles.paper}>
+        <DietGeneralInfo diet={this.state.diet}/>
+        <Divider/>
+        {/* <Text>Cambia id: { this.state.json }</Text> */}
+        
       </View>
     );
   }
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
   paper: {
     backgroundColor: '#FFF',
     borderColor: '#DCDCDC',
