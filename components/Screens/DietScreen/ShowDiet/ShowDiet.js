@@ -9,7 +9,7 @@ import {
   Alert,
 } from 'react-native';
 
-import { BASE_API_URL } from '../../../constants';
+import { BASE_API_URL } from '../../../../constants';
 
 class ShowDiet extends React.PureComponent {
   static navigationOptions = ({ navigation }) => {
@@ -20,6 +20,7 @@ class ShowDiet extends React.PureComponent {
 
   state = {
     diet: null,
+    dietFoodDetails: [],
     json: 'null'
   }
 
@@ -27,7 +28,10 @@ class ShowDiet extends React.PureComponent {
 
     const dietId = this.props.navigation.getParam('dietId', '');
     const diet = await this.getFullDiet( dietId );
-    this.setState({ json: JSON.stringify(diet, null, '  ') })
+    this.setState({
+      diet,
+      json: JSON.stringify(diet, null, '  ') 
+    })
 
   }
 
@@ -64,8 +68,11 @@ class ShowDiet extends React.PureComponent {
 
   render() {
     return (
+      
       <View style={styles.container}>
-        <Text>Cambia id: { this.state.json }</Text>
+        <View style={styles.paper}>
+          <Text>Cambia id: { this.state.json }</Text>
+        </View>
       </View>
     );
   }
@@ -73,11 +80,19 @@ class ShowDiet extends React.PureComponent {
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 15,
-    paddingVertical: 15,
     flex: 1,
-    backgroundColor: '#fff'
   },
+  paper: {
+    backgroundColor: '#FFF',
+    borderColor: '#DCDCDC',
+    borderBottomWidth: 2,
+    borderLeftWidth: 2,
+    marginHorizontal: 10,
+    alignItems: 'center',
+    marginVertical: 10,
+    borderRadius: 5,
+    padding: 8,
+  }
 });
 
 export default ShowDiet;

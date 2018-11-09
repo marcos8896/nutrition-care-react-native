@@ -1,7 +1,9 @@
 import React from 'react';
-import { Button, View, AsyncStorage } from 'react-native';
+import { Button, ScrollView, AsyncStorage } from 'react-native';
+
 
 import styles from '../../../globalStyles';
+import Card from '../../shared/Card/Card';
 
 class DashboardScreen extends React.Component {
   static navigationOptions = {
@@ -10,18 +12,37 @@ class DashboardScreen extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <Button title="Go to diet screen example" onPress={this._goToDiet} />
-        <Button title="Sign out example" onPress={this._signOutAsync} />
-      </View>
+      <ScrollView contentContainerStyle={styles.container}>
+        <Card
+          header="Rutinas"
+          body="Lorem ipsum dolor sit ammet, Lorem ipsum dolor sit ammet, Lorem ipsum dolor sit ammet, Lorem ipsum dolor sit ammet."
+          image="https://content.active.com/Assets/Active.com+Content+Site+Digital+Assets/Fitness/580x350/Push-Up.jpg"
+          titleButton="Ir a mis rutinas"
+          onClick={this.goToRoutine}
+        />
+        <Card
+          header="Dietas"
+          body="Lorem ipsum dolor sit ammet, Lorem ipsum dolor sit ammet, Lorem ipsum dolor sit ammet, Lorem ipsum dolor sit ammet."
+          image="https://images.agoramedia.com/everydayhealth/gcms/Why-Carbohydrates-Are-Important-for-Your-Diet-722x406.jpg"
+          titleButton="Ir a mis dietas"
+          onClick={this.goToDiet}
+        />
+        <Button title="Cerrar sesión" onPress={this.signOutAsync} />
+      </ScrollView>
     );
   }
 
-  _goToDiet = () => {
+
+
+  goToRoutine = () => {
+    this.props.navigation.navigate('RoutineList');
+  };
+
+  goToDiet = () => {
     this.props.navigation.navigate('Diets');
   };
 
-  _signOutAsync = async () => {
+  signOutAsync = async () => {
     await AsyncStorage.clear();
     this.props.navigation.navigate('Auth');
   };
