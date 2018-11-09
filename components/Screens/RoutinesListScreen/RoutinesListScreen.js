@@ -32,7 +32,7 @@ class RoutinesListScreen extends React.Component {
   }
 
   handlePress = routineId => {
-    console.log('ID', routineId)
+    this.props.navigation.navigate('ShowRoutine', { routineId });
   }
 
   renderItems() {

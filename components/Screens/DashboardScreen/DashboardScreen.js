@@ -35,7 +35,7 @@ class DashboardScreen extends React.Component {
 
 
   goToRoutine = () => {
-    this.props.navigation.navigate('Routine');
+    this.props.navigation.navigate('RoutineList');
   };
 
   goToDiet = () => {
