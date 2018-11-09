@@ -36,7 +36,10 @@ const Card = ({ image, header, body, titleButton, onClick }) => {
             {body}
           </Text>
         </View>
-        <Button title={titleButton} onPress={onClick}/>
+        {
+          titleButton &&
+          <Button title={titleButton} onPress={onClick}/>
+        }
       </View>
     </View>
   )
