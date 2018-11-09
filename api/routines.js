@@ -1,6 +1,5 @@
 import { AsyncStorage } from 'react-native';
 import { BASE_API_URL } from '../constants';
-import loopbackParams from '../shared/loopback-params';
 
 export const getRoutines = async () => {
   try {
