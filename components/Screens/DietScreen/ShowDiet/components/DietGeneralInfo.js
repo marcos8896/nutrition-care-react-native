@@ -22,6 +22,7 @@ const DietGeneralInfo = ({ diet }) => (
         <Text style={styles.textMargin}> Calorias: {diet.totalCalories}</Text>
       </View>
     </View>
+
   </View>
 );
 
@@ -43,6 +44,9 @@ const styles = StyleSheet.create({
   textMargin: {
     marginLeft: 5,
     marginRight: 5,
+  },
+  date: {
+    alignSelf: 'center',
   }
 });
 
