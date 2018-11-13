@@ -5,13 +5,8 @@ import DietGeneralInfo from './components/DietGeneralInfo';
 import Divider from '../../../shared/Divider/Divider';
 
 import { 
- View, 
- AsyncStorage, 
- StyleSheet, 
- Alert, 
- Text,
- FlatList,
- TouchableOpacity,
+ View, AsyncStorage, StyleSheet, 
+ Alert, Text, FlatList,
 } from 'react-native';
 
 import { BASE_API_URL } from '../../../../constants';
@@ -111,28 +106,25 @@ class ShowDiet extends React.PureComponent {
       rowStyles = styles.row;
 
     return (
-      <TouchableOpacity 
-        style={rowStyles}
-      >
+      <View style={rowStyles}>
 
-        <Text style={styles.description}>
-          {item.description}:
-        </Text>
+        <Text style={styles.detailDescription}> {item.description}</Text>
+          
+        <Text> {item.desiredGrams} gramos incluyen: </Text>
 
-        <View>
+        <View style={styles.quantities}>
+          <View>
+            <Text style={styles.textMargin}> Calorías - {item.calculatedCalories} </Text>
+            <Text style={styles.textMargin}> Proteínas - {item.calculatedProteins} </Text>
+          </View>
 
-          <Text> 
-            Por cada {item.desiredGrams} gramos, incluye:
-          </Text>
-
-          <Text> Calorías - {item.calculatedCalories} </Text>
-          <Text> Proteínas - {item.calculatedProteins} </Text>
-          <Text> Grasas - {item.calculatedFats} </Text>
-          <Text> Carbohidratos - {item.calculatedCarbs} </Text>
-          <Text> Key - {item.key} </Text>
-
+          <View>
+            <Text style={styles.textMargin}> Grasas - {item.calculatedFats} </Text>
+            <Text style={styles.textMargin}> Carbohidratos - {item.calculatedCarbs} </Text>
+          </View>
         </View>
-      </TouchableOpacity>
+
+      </View>
     );
   }
 
@@ -143,6 +135,9 @@ class ShowDiet extends React.PureComponent {
         <Divider/>
         <Text>Creado el: {this.state.diet.date}</Text>
         <Divider/>
+        <Text style={styles.detailsHeader}>
+          Alimentos incluidos en la dieta
+        </Text>
         <View style={styles.listContainer}>
           <FlatList
             data={this.state.dietFoodDetails}
@@ -176,14 +171,36 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 20,
     borderRadius: 5,
+    flexWrap: "wrap",
   },
   oddRow: {
     backgroundColor: '#fcfcfc',
   },
   listContainer: { 
     alignSelf: 'stretch',
-    marginBottom: 150,
-  }
+    marginBottom: 180,
+  },
+  detailsHeader: {
+    fontSize: 16,
+    fontWeight: '400',
+    fontStyle: 'italic',
+    marginTop: 25,
+    marginBottom: 10,
+  },
+  detailDescription: {
+    alignSelf: 'center',
+    fontStyle: 'italic',
+    marginBottom: 10,
+    fontSize: 15,
+  },
+  quantities: {
+    paddingVertical: 15,
+    flexDirection: 'row',
+    flexWrap: "wrap"
+  },
+  textMargin: {
+    marginRight: 8,
+  },
 });
 
 export default ShowDiet;
