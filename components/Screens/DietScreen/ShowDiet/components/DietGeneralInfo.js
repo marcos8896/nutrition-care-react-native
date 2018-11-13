@@ -42,6 +42,7 @@ const styles = StyleSheet.create({
     flexWrap: "wrap"
   },
   textMargin: {
+    fontSize: 16,
     marginLeft: 5,
     marginRight: 5,
   },
