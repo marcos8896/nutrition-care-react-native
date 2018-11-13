@@ -39,7 +39,7 @@ class DashboardScreen extends React.Component {
   };
 
   goToDiet = () => {
-    this.props.navigation.navigate('Diet');
+    this.props.navigation.navigate('Diets');
   };
 
   signOutAsync = async () => {
