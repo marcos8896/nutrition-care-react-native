@@ -4,10 +4,9 @@ import { IMAGES_API_URL } from '../../../../constants';
 import CardExercise from '../../../shared/CardExercise/CardExercise';
 import Paper from '../../../shared/Paper/Paper';
 
-
 const RoutineDayResume = ({ name, exercises }) => {
   return (
-    <View style={styles.container}>
+    <View style={{ backgroundColor: 'white' }}>
       <View>
         <Paper text={name.toUpperCase()} />
       </View>
