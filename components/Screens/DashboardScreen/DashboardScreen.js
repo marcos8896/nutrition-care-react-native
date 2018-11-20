@@ -15,14 +15,14 @@ class DashboardScreen extends React.Component {
       <ScrollView contentContainerStyle={styles.container}>
         <Card
           header="Rutinas"
-          body="Lorem ipsum dolor sit ammet, Lorem ipsum dolor sit ammet, Lorem ipsum dolor sit ammet, Lorem ipsum dolor sit ammet."
+          body="Consulta tus rutinas, los ejercicios que las componenten y mucho más en esta sección."
           image="https://content.active.com/Assets/Active.com+Content+Site+Digital+Assets/Fitness/580x350/Push-Up.jpg"
           titleButton="Ir a mis rutinas"
           onClick={this.goToRoutine}
         />
         <Card
           header="Dietas"
-          body="Lorem ipsum dolor sit ammet, Lorem ipsum dolor sit ammet, Lorem ipsum dolor sit ammet, Lorem ipsum dolor sit ammet."
+          body="Consulta tus dietas, los alimentos que contienen y todos sus detalles en esta sección."
           image="https://images.agoramedia.com/everydayhealth/gcms/Why-Carbohydrates-Are-Important-for-Your-Diet-722x406.jpg"
           titleButton="Ir a mis dietas"
           onClick={this.goToDiet}
@@ -39,7 +39,7 @@ class DashboardScreen extends React.Component {
   };
 
   goToDiet = () => {
-    this.props.navigation.navigate('Diet');
+    this.props.navigation.navigate('Diets');
   };
 
   signOutAsync = async () => {

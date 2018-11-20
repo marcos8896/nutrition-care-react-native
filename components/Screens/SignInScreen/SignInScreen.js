@@ -73,7 +73,7 @@ class SignInScreen extends React.Component {
       } else {
         await Promise.all([
           AsyncStorage.setItem('@app:userToken', data.id),
-          AsyncStorage.setItem('@app:userId', data.userId)
+          AsyncStorage.setItem('@app:userId', data.userId),
         ]);
         this.props.navigation.navigate('App');
       }
